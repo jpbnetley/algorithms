@@ -3,92 +3,83 @@
 // Only consider characters, not spaces or punctuation.
 // Consider capital letters to be the same as lower case.
 
-function anagram1(strA, strB) {
+export const anagram1 = (strA, strB) => {
   // we are going to use RegExp to get rid of spaces and exclamation marks.
-  let modified_strA = strA.replace(/[^\w]/g, '').toLowerCase()
-  let modified_strB = strB.replace(/[^\w]/g, '').toLowerCase()
-  let charMapA = {}
-  let charMapB = {}
-  for (let char of modified_strA) {
-    charMapA[char] = charMapA[char] + 1 || 1
-  }
-  for (let char of modified_strB) {
-    charMapB[char] = charMapB[char] + 1 || 1
-  }
+  const modified_strA = strA.replace(/[^\w]/g, '').toLowerCase()
+  const modified_strB = strB.replace(/[^\w]/g, '').toLowerCase()
 
-  if (Object.keys(charMapA).length !== Object.keys(charMapB).length) {
+  const charMapA = [...modified_strA].reduce((acc, letter) => {
+    const objectKey = { [letter]: acc[letter] + 1 || 1 }
+    return { ...acc, ...objectKey }
+  }, {})
+
+  const charMapB = [...modified_strB].reduce((acc, letter) => {
+    const objectKey = { [letter]: acc[letter] + 1 || 1 }
+    return { ...acc, ...objectKey }
+  }, {})
+
+  if (Object.keys(charMapA).length !== Object.keys(charMapB).length)
     return false
+  //TODO: convert from here
+  for (let char in charMapA) {
+    if (!charMapB[char] || charMapA[char] !== charMapB[char]) return false
   }
 
-  for (let char in charMapA) {
-    if (!charMapB[char] || charMapA[char] !== charMapB[char]) {
-      return false
-    }
-  }
   return true
 }
 
-function anagram2(strA, strB) {
-  if (strA.length !== strB.length) {
-    return false
-  }
+export const anagram2 = (strA, strB) => {
+  if (strA.length !== strB.length) return false
 
   // we are going to use RegExp to get rid of spaces and exclamation marks.
-  let modified_strA = strA.replace(/[^\w]/g, '').toLowerCase()
-  let modified_strB = strB.replace(/[^\w]/g, '').toLowerCase()
-  let charMapA = {}
-  let charMapB = {}
-  for (let char of modified_strA) {
-    charMapA[char] = charMapA[char] + 1 || 1
-  }
-  for (let char of modified_strB) {
-    charMapB[char] = charMapB[char] + 1 || 1
-  }
+  const modified_strA = strA.replace(/[^\w]/g, '').toLowerCase()
+  const modified_strB = strB.replace(/[^\w]/g, '').toLowerCase()
+
+  const charMapA = [...modified_strA].reduce((acc, letter) => {
+    const objectKey = { [letter]: acc[letter] + 1 || 1 }
+    return { ...acc, ...objectKey }
+  }, {})
+
+  const charMapB = [...modified_strB].reduce((acc, letter) => {
+    const objectKey = { [letter]: acc[letter] + 1 || 1 }
+    return { ...acc, ...objectKey }
+  }, {})
 
   for (let char in charMapA) {
-    if (!charMapB[char] || charMapA[char] !== charMapB[char]) {
-      return false
-    }
+    if (!charMapB[char] || charMapA[char] !== charMapB[char]) return false
   }
   return true
 }
 
 // You can also solve this by using a helper function, like this:
 
-function buildCharMap(str) {
-  const charMap = {}
-  let modifiedStr = str.replace(/[^\w]/g, '').toLowerCase()
-  for (let char of modifiedStr) {
-    charMap[char] = charMap[char] + 1 || 1
-  }
+const buildCharMap = (str) => {
+  const modifiedStr = str.replace(/[^\w]/g, '').toLowerCase()
+
+  const charMap = [...modifiedStr].reduce((acc, letter) => {
+    const objectKey = { [letter]: acc[letter] + 1 || 1 }
+    return { ...acc, ...objectKey }
+  }, {})
+
   return charMap
 }
 
-function anagram3(strA, strB) {
-  if (strA.length !== strB.length) {
-    return false
-  }
+export const anagram3 = (strA, strB) => {
+  if (strA.length !== strB.length) return false
 
   // we are going to use RegExp to get rid of spaces and exclamation marks.
-  let charMapA = buildCharMap(strA)
-  let charMapB = buildCharMap(strB)
+  const charMapA = buildCharMap(strA)
+  const charMapB = buildCharMap(strB)
 
   for (let char in charMapA) {
-    if (!charMapB[char] || charMapA[char] !== charMapB[char]) {
-      return false
-    }
+    if (!charMapB[char] || charMapA[char] !== charMapB[char]) return false
   }
   return true
 }
 
 // You can do the same thing without character mapping by sorting the characters and comparing them.
 
-function sortString(str) {
-  return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('')
-}
+const sortString = (str) =>
+  str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('')
 
-function anagram4(strA, strB) {
-  return sortString(strA) === sortString(strB)
-}
-
-module.exports = anagram4
+export const anagram4 = (strA, strB) => sortString(strA) === sortString(strB)

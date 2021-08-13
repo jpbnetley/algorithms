@@ -7,7 +7,8 @@
     "test": "jest",
     "test:w": "jest --watch",
     "test:wa": "jest --watchAll",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "npx prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -22,15 +23,14 @@
   "jest": {
     "testEnvironment": "node"
   },
-  "dependencies": {
-    "jest": "^27.0.6"
-  },
   "devDependencies": {
+    "@babel/preset-env": "^7.15.0",
     "husky": "^7.0.0",
+    "jest": "^27.0.6",
     "lint-staged": "^11.1.2",
     "prettier": "2.3.2"
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
