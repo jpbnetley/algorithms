@@ -1,11 +1,7 @@
 // const anagram = require('./index.js')
 import { anagram1, anagram2, anagram3, anagram4 } from './index.js'
 
-const testFunctions = [anagram1, anagram2, anagram3, anagram4]
-
 const executeTest = (anagram) => {
-  console.log('testing', anagram)
-
   test('anagram function exists', () => {
     expect(typeof anagram).toEqual('function')
   })
@@ -31,4 +27,7 @@ const executeTest = (anagram) => {
   })
 }
 
-testFunctions.map(executeTest)
+describe('anagram 1 should pass', () => executeTest(anagram1))
+describe('anagram 2 should pass', () => executeTest(anagram2))
+describe('anagram 3 should pass', () => executeTest(anagram3))
+describe('anagram 4 should pass', () => executeTest(anagram4))
