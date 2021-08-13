@@ -3,7 +3,7 @@
 // Only consider characters, not spaces or punctuation.
 // Consider capital letters to be the same as lower case.
 
-const anagram1 = (strA, strB) => {
+export const anagram1 = (strA, strB) => {
   // we are going to use RegExp to get rid of spaces and exclamation marks.
   const modified_strA = strA.replace(/[^\w]/g, '').toLowerCase()
   const modified_strB = strB.replace(/[^\w]/g, '').toLowerCase()
@@ -28,7 +28,7 @@ const anagram1 = (strA, strB) => {
   return true
 }
 
-const anagram2 = (strA, strB) => {
+export const anagram2 = (strA, strB) => {
   if (strA.length !== strB.length) return false
 
   // we are going to use RegExp to get rid of spaces and exclamation marks.
@@ -58,13 +58,14 @@ const anagram2 = (strA, strB) => {
 const buildCharMap = (str) => {
   const charMap = {}
   const modifiedStr = str.replace(/[^\w]/g, '').toLowerCase()
+
   for (let char of modifiedStr) {
     charMap[char] = charMap[char] + 1 || 1
   }
   return charMap
 }
 
-const anagram3 = (strA, strB) => {
+export const anagram3 = (strA, strB) => {
   if (strA.length !== strB.length) return false
 
   // we are going to use RegExp to get rid of spaces and exclamation marks.
@@ -79,10 +80,7 @@ const anagram3 = (strA, strB) => {
 
 // You can do the same thing without character mapping by sorting the characters and comparing them.
 
-const sortString = (str) => {
-  return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('')
-}
+const sortString = (str) =>
+  str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('')
 
-const anagram4 = (strA, strB) => sortString(strA) === sortString(strB)
-
-module.exports = anagram4
+export const anagram4 = (strA, strB) => sortString(strA) === sortString(strB)
