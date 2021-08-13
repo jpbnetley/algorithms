@@ -8,19 +8,19 @@ export const anagram1 = (strA, strB) => {
   const modified_strA = strA.replace(/[^\w]/g, '').toLowerCase()
   const modified_strB = strB.replace(/[^\w]/g, '').toLowerCase()
 
-  let charMapA = {}
-  let charMapB = {}
+  const charMapA = [...modified_strA].reduce((acc, letter) => {
+    const objectKey = { [letter]: acc[letter] + 1 || 1 }
+    return { ...acc, ...objectKey }
+  }, {})
 
-  for (let char of modified_strA) {
-    charMapA[char] = charMapA[char] + 1 || 1
-  }
-  for (let char of modified_strB) {
-    charMapB[char] = charMapB[char] + 1 || 1
-  }
+  const charMapB = [...modified_strB].reduce((acc, letter) => {
+    const objectKey = { [letter]: acc[letter] + 1 || 1 }
+    return { ...acc, ...objectKey }
+  }, {})
 
   if (Object.keys(charMapA).length !== Object.keys(charMapB).length)
     return false
-
+  //TODO: convert from here
   for (let char in charMapA) {
     if (!charMapB[char] || charMapA[char] !== charMapB[char]) return false
   }
@@ -34,21 +34,19 @@ export const anagram2 = (strA, strB) => {
   // we are going to use RegExp to get rid of spaces and exclamation marks.
   const modified_strA = strA.replace(/[^\w]/g, '').toLowerCase()
   const modified_strB = strB.replace(/[^\w]/g, '').toLowerCase()
-  let charMapA = {}
-  let charMapB = {}
 
-  for (let char of modified_strA) {
-    charMapA[char] = charMapA[char] + 1 || 1
-  }
+  const charMapA = [...modified_strA].reduce((acc, letter) => {
+    const objectKey = { [letter]: acc[letter] + 1 || 1 }
+    return { ...acc, ...objectKey }
+  }, {})
 
-  for (let char of modified_strB) {
-    charMapB[char] = charMapB[char] + 1 || 1
-  }
+  const charMapB = [...modified_strB].reduce((acc, letter) => {
+    const objectKey = { [letter]: acc[letter] + 1 || 1 }
+    return { ...acc, ...objectKey }
+  }, {})
 
   for (let char in charMapA) {
-    if (!charMapB[char] || charMapA[char] !== charMapB[char]) {
-      return false
-    }
+    if (!charMapB[char] || charMapA[char] !== charMapB[char]) return false
   }
   return true
 }
@@ -56,12 +54,13 @@ export const anagram2 = (strA, strB) => {
 // You can also solve this by using a helper function, like this:
 
 const buildCharMap = (str) => {
-  const charMap = {}
   const modifiedStr = str.replace(/[^\w]/g, '').toLowerCase()
 
-  for (let char of modifiedStr) {
-    charMap[char] = charMap[char] + 1 || 1
-  }
+  const charMap = [...modifiedStr].reduce((acc, letter) => {
+    const objectKey = { [letter]: acc[letter] + 1 || 1 }
+    return { ...acc, ...objectKey }
+  }, {})
+
   return charMap
 }
 
