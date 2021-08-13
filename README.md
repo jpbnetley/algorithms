@@ -10,6 +10,6 @@ The goal of this fork is to keep the algorithms mostly the same, but convert the
 ## This project makes use of the following packages:
 
 - [Prettier](https://prettier.io/): for formatting
-- [Babel] (https://babeljs.io/) for ES6 conversion
+- [Babel](https://babeljs.io/) for ES6 conversion
 
 source: https://github.com/cakebatterandsprinkles/algorithms
