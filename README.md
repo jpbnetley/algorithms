@@ -5,7 +5,7 @@
 
 > Algorithms and data structures in JS
 
-The goal of this fork is to keep the algoritms mostly the same, but convert them to ES6 syntax.
+The goal of this fork is to keep the algorithms mostly the same, but convert them to ES6 syntax.
 
 ## This project makes use of the following packages:
 
