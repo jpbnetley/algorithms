@@ -8,7 +8,7 @@ const anagram1 = (strA, strB) => {
   const modified_strA = strA.replace(/[^\w]/g, '').toLowerCase()
   const modified_strB = strB.replace(/[^\w]/g, '').toLowerCase()
 
-  let charMapA = {}
+  let charMapA = {};
   let charMapB = {}
 
   for (let char of modified_strA) {
