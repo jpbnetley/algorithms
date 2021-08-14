@@ -20,12 +20,10 @@ export const anagram1 = (strA, strB) => {
 
   if (Object.keys(charMapA).length !== Object.keys(charMapB).length)
     return false
-  //TODO: convert from here
-  for (let char in charMapA) {
-    if (!charMapB[char] || charMapA[char] !== charMapB[char]) return false
-  }
 
-  return true
+  return Object.keys(charMapA).every(
+    (letter) => !charMapA[letter] || charMapB[letter] === charMapB[letter]
+  )
 }
 
 export const anagram2 = (strA, strB) => {
@@ -45,10 +43,9 @@ export const anagram2 = (strA, strB) => {
     return { ...acc, ...objectKey }
   }, {})
 
-  for (let char in charMapA) {
-    if (!charMapB[char] || charMapA[char] !== charMapB[char]) return false
-  }
-  return true
+  return Object.keys(charMapA).every(
+    (letter) => !charMapB[letter] || charMapA[letter] === charMapB[letter]
+  )
 }
 
 // You can also solve this by using a helper function, like this:
@@ -71,10 +68,9 @@ export const anagram3 = (strA, strB) => {
   const charMapA = buildCharMap(strA)
   const charMapB = buildCharMap(strB)
 
-  for (let char in charMapA) {
-    if (!charMapB[char] || charMapA[char] !== charMapB[char]) return false
-  }
-  return true
+  return Object.keys(charMapA).every(
+    (letter) => !charMapB[letter] || charMapA[letter] === charMapB[letter]
+  )
 }
 
 // You can do the same thing without character mapping by sorting the characters and comparing them.
