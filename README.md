@@ -16,7 +16,7 @@ source: https://github.com/cakebatterandsprinkles/algorithms
 
 ## Refactored files
 
-[x] anagram  
+[X] anagram  
 [ ] arr_chunk  
 [ ] binary_search_tree  
 [ ] bubble_sort  
