@@ -1,6 +1,6 @@
 // Given an array and chunk size, divide the array into many subarrays where each subarray is of length size.
 
-function arrChunk1(arr, size) {
+export function arrChunk1(arr, size) {
   const chunkedArr = []
   let subChunk = []
   for (let element of arr) {
@@ -14,7 +14,7 @@ function arrChunk1(arr, size) {
   return chunkedArr
 }
 
-function arrChunk2(arr, size) {
+export function arrChunk2(arr, size) {
   const chunked = []
   for (let el of arr) {
     const last = chunked[chunked.length - 1]
@@ -28,7 +28,7 @@ function arrChunk2(arr, size) {
   return chunked
 }
 
-function arrChunk3(arr, size) {
+export function arrChunk3(arr, size) {
   const chunked = []
   let index = 0
 
@@ -38,5 +38,3 @@ function arrChunk3(arr, size) {
   }
   return chunked
 }
-
-module.exports = arrChunk3
